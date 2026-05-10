@@ -16,7 +16,7 @@ CHARACTER SET utf8mb4
 COLLATE utf8mb4_unicode_ci;
 
 -- Seleccionar la base de datos para uso
-USE proyecto_db;
+USE proyecto_db; 
 
 -- =====================================================
 -- TABLA: usuarios
