@@ -27,8 +27,6 @@ jobs:
           tags: ${{ secrets.DOCKERHUB_USERNAME }}/database:latest
           build-args: |
             MYSQL_ROOT_PASSWORD=${{ secrets.MYSQL_ROOT_PASSWORD }}
-            MYSQL_USER=${{ secrets.MYSQL_USER }}
-            MYSQL_PASSWORD=${{ secrets.MYSQL_PASSWORD }}
 
       - name: Desplegar en la EC2 de datos (via ssh)
         uses: appleboy/ssh-action@v1.0.3
@@ -50,8 +48,6 @@ jobs:
               -p 3306:3306 \
               -e MYSQL_ROOT_PASSWORD=${{ secrets.MYSQL_ROOT_PASSWORD }} \
               -e MYSQL_DATABASE=proyecto_db \
-              -e MYSQL_USER=${{ secrets.MYSQL_USER }} \
-              -e MYSQL_PASSWORD=${{ secrets.MYSQL_PASSWORD }} \
               -v mysql_data:/var/lib/mysql \
               --restart always \
               ${{ secrets.DOCKERHUB_USERNAME }}/database:latest
