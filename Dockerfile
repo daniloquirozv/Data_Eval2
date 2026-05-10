@@ -14,7 +14,8 @@ COPY 01_creacion_base_datos.sql /docker-entrypoint-initdb.d/
 COPY 02_backup_y_mantenimiento.sql /scripts/
 
 # Configuración para permitir conexiones remotas
-RUN echo "bind-address = 0.0.0.0" >> /etc/mysql/conf.d/custom.cnf
+RUN echo "[mysqld]" > /etc/mysql/conf.d/custom.cnf && \
+    echo "bind-address = 0.0.0.0" >> /etc/mysql/conf.d/custom.cnf
 
 # Puerto por defecto de MySQL
 EXPOSE 3306
